@@ -10,10 +10,14 @@ import json
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "fallback-secret")
 
-# MongoDB Atlas URI from environment
+# MongoDB URI (MUST be set in Render env)
 MONGO_URI = os.environ.get("MONGO_URI")
 
-client = MongoClient(MONGO_URI)
+if not MONGO_URI:
+    raise Exception("❌ MONGO_URI not set in environment variables")
+
+# MongoDB connection with timeout (prevents hanging)
+client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
 db = client["greenbasket"]
 
 users_col    = db["users"]
