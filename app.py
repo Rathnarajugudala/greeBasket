@@ -8,7 +8,7 @@ import os
 import json
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "fallback-secret")
+app.secret_key = os.environ.get("SECRET_KEY", "greenbasket-secret-2025")
 
 # MongoDB URI (MUST be set in Render env)
 MONGO_URI = os.environ.get("MONGO_URI")
