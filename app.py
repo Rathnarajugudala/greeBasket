@@ -454,4 +454,4 @@ def admin_stats():
 if __name__ == "__main__":
     seed_products()
     seed_admin()
-    app.run(debug=True, port=5000)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
