@@ -11,7 +11,7 @@ async function api(path, method = 'GET', body = null) {
   const opts = {
     method,
     headers: { 'Content-Type': 'application/json' },
-    credentials: 'same-origin'
+    credentials: 'include'
   };
   if (body) opts.body = JSON.stringify(body);
   const res  = await fetch(path, opts);
